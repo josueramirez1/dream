@@ -35,7 +35,9 @@ app.post("/", async (req, res) => {
     res.send(responseFromAi.data);
   } catch (error) {
     console.error(`Error generating image: ${error}`);
-    res.status(500);
+    res
+      .status(500)
+      .send(error?.response.data.error.message || "Something went wrong");
   }
 });
 
