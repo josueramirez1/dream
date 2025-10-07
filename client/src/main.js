@@ -17,7 +17,7 @@ btnReq.addEventListener("click", async (e) => {
   try {
     startEmoji();
 
-    const fetchingImage = await fetch(`${API_URL}`, {
+    const fetchingImage = await fetch(`${API_URL}/dream`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
