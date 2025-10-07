@@ -24,7 +24,7 @@ const port = 3000;
 
 //post will initialized image generator
 
-app.post("/dream", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
     const prompt = req.body.prompt;
 
