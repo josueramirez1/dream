@@ -1,7 +1,5 @@
 import "./style.css";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 const btnReq = document.querySelector(".btn");
 const image = document.getElementById("image");
 const prompt = document.getElementById("prompt");
@@ -17,7 +15,7 @@ btnReq.addEventListener("click", async (e) => {
   try {
     startEmoji();
 
-    const fetchingImage = await fetch(`${API_URL}/dream`, {
+    const fetchingImage = await fetch(`https://dream2.onrender.com.`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
