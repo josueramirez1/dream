@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "https://incredible-cat-d6cc49.netlify.app/",
-      "http://localhost:5173",
+      "https://incredible-cat-d6cc49.netlify.app",
+      "http://localhost:3000",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
@@ -21,16 +21,11 @@ app.use(
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
-const port = 3000;
-
-//get will serve the html css side
-
-//post will initialized image generator
+const port = process.env.PORT || 3000;
 
 app.post("/", async (req, res) => {
   try {
     const prompt = req.body.prompt;
-
     const responseFromAi = await openai.images.generate({
       model: "dall-e-2",
       prompt,
@@ -45,5 +40,5 @@ app.post("/", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listening... `);
+  console.log(`Server listening at ${port}`);
 });
