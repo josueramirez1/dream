@@ -5,7 +5,15 @@ import express from "express";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: ["https://incredible-cat-d6cc49.netlify.app/"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
