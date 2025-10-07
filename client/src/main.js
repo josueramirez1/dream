@@ -1,5 +1,7 @@
 import "./style.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const btnReq = document.querySelector(".btn");
 const image = document.getElementById("image");
 const prompt = document.getElementById("prompt");
@@ -15,7 +17,7 @@ btnReq.addEventListener("click", async (e) => {
   try {
     startEmoji();
 
-    const fetchingImage = await fetch("http://localhost:3000/dream", {
+    const fetchingImage = await fetch(`${API_URL}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
