@@ -1,20 +1,23 @@
 import OpenAI from "openai";
 import * as dotenv from "dotenv";
-import cors from "cors";
 import express from "express";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://incredible-cat-d6cc49.netlify.app/"],
+    origin: [
+      "https://incredible-cat-d6cc49.netlify.app/",
+      "http://localhost:5173",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
 
-app.use(express.json());
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
@@ -24,7 +27,7 @@ const port = 3000;
 
 //post will initialized image generator
 
-app.post("/", async (req, res) => {
+app.post("/dream", async (req, res) => {
   try {
     const prompt = req.body.prompt;
 
@@ -42,5 +45,5 @@ app.post("/", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
+  console.log(`Server listening... `);
 });
