@@ -15,7 +15,7 @@ btnReq.addEventListener("click", async (e) => {
   try {
     startEmoji();
 
-    const fetchingImage = await fetch(`https://dream2.onrender.com.`, {
+    const fetchingImage = await fetch(`https://dream2.onrender.com`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
